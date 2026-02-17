@@ -127,6 +127,38 @@ Located at `/demo`, this form:
 
 None required. Webhook URL is hardcoded in `src/lib/constants.ts`.
 
+## Docker
+
+### Using Docker Compose (Recommended)
+
+```bash
+# Build and run
+docker-compose up
+
+# Run in detached mode
+docker-compose up -d
+
+# Stop
+docker-compose down
+```
+
+Visit [http://localhost:3002](http://localhost:3002)
+
+### Using Docker Directly
+
+```bash
+# Build the image
+docker build -t voice-demo .
+
+# Run the container
+docker run -p 3002:3000 voice-demo
+
+# Run in detached mode
+docker run -d -p 3002:3000 --name voice-demo voice-demo
+```
+
+**Note:** The container runs on port 3000 internally, but is mapped to port 3002 to match the development configuration.
+
 ## Deployment
 
 This is a standalone project designed for subdomain deployment (e.g., voice.digitalytics.ai).

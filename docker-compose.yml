@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  voice-demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: voice-demo
+    ports:
+      - "3002:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+    # Uncomment to add environment variables from file
+    # env_file:
+    #   - .env.production
