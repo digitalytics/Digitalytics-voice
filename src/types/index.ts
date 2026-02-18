@@ -1,4 +1,26 @@
 /**
+ * Agent identifier
+ */
+export type AgentId = 'real-estate' | 'tourbot';
+
+/**
+ * Agent icon key
+ */
+export type AgentIconKey = 'home' | 'globe';
+
+/**
+ * Agent configuration
+ */
+export interface AgentConfig {
+  id: AgentId;
+  name: string;
+  tagline: string;
+  description: string;
+  iconKey: AgentIconKey;
+  webhookUrl: string;
+}
+
+/**
  * Demo form data structure
  */
 export interface DemoFormData {

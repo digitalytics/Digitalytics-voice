@@ -34,11 +34,31 @@ export const RADIUS = {
   cardLarge: 'rounded-3xl',
 } as const;
 
-// API Configuration
+// API Configuration (kept for backward compatibility)
 export const API_CONFIG = {
   webhookUrl: 'https://n8n.digitalytics.us/webhook/get-call',
   timeout: 10000, // 10 seconds
 } as const;
+
+// Agent configurations
+export const AGENTS = [
+  {
+    id: 'real-estate' as const,
+    name: 'Real Estate Agent',
+    tagline: 'Property listings, viewings & more',
+    description: 'Fill out the form and receive a live demo call from our Real Estate AI agent within 2 minutes.',
+    iconKey: 'home' as const,
+    webhookUrl: 'https://n8n.digitalytics.us/webhook/get-call',
+  },
+  {
+    id: 'tourbot' as const,
+    name: 'TourBot',
+    tagline: 'Travel & Tour FAQ Agent',
+    description: 'Fill out the form and receive a live demo call from our TourBot AI agent within 2 minutes.',
+    iconKey: 'globe' as const,
+    webhookUrl: 'https://n8n.digitalytics.us/webhook/tour-outbound-call',
+  },
+];
 
 // Navigation Links
 export const NAV_LINKS = [
