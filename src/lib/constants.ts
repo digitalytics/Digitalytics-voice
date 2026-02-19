@@ -58,6 +58,14 @@ export const AGENTS = [
     iconKey: 'globe' as const,
     webhookUrl: 'https://n8n.digitalytics.us/webhook/tour-outbound-call',
   },
+  {
+    id: 'medibook' as const,
+    name: 'MediBook',
+    tagline: 'AI Medical Receptionist',
+    description: 'Fill out the form and receive a live demo call from MediBook — your 24/7 virtual medical receptionist.',
+    iconKey: 'stethoscope' as const,
+    webhookUrl: 'https://n8n.digitalytics.us/webhook/medical-outbound-call',
+  },
 ];
 
 // Navigation Links

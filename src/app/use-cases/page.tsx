@@ -28,6 +28,18 @@ function GlobeIcon({ className }: { className?: string }) {
   );
 }
 
+function StethoscopeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 4v4a7 7 0 0014 0V4" />
+      <path d="M12 15v2" />
+      <circle cx="12" cy="19" r="2" />
+      <circle cx="5" cy="4" r="1" fill="currentColor" stroke="none" />
+      <circle cx="19" cy="4" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 const AGENT_USE_CASES = [
   {
     agentId: 'real-estate',
@@ -129,6 +141,28 @@ const AGENT_USE_CASES = [
       },
     ],
   },
+  {
+    agentId: 'medibook',
+    agentName: 'MediBook',
+    agentTagline: 'AI Medical Receptionist',
+    iconKey: 'stethoscope',
+    useCases: [
+      {
+        title: 'Complete Appointment Management',
+        description:
+          'Your 24/7 virtual medical receptionist that handles patient calls automatically — booking, checking, cancelling, and rescheduling appointments with instant confirmations.',
+        icon: '🩺',
+        features: [
+          'Book appointments with the right doctor instantly',
+          'Check doctor availability and open time slots',
+          'Cancel appointments and free up slots immediately',
+          'Reschedule by cancelling and rebooking seamlessly',
+          'Send email and SMS confirmations automatically',
+        ],
+        isPrimary: true,
+      },
+    ],
+  },
 ];
 
 export default function UseCasesPage() {
@@ -144,9 +178,9 @@ export default function UseCasesPage() {
                 AI Voice Agents for Every Industry
               </h1>
               <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                Our Real Estate Agent guides investors through Bay Area property
-                opportunities, and TourBot handles everything from tour info to
-                bookings and complaints — all on autopilot.
+                Our Real Estate Agent, TourBot, and MediBook each handle
+                real-world customer conversations 24/7 — so your team never
+                misses a lead, booking, or patient call.
               </p>
             </motion.div>
           </div>
@@ -169,8 +203,10 @@ export default function UseCasesPage() {
                     <div className="w-10 h-10 text-green-800 flex-shrink-0">
                       {agent.iconKey === 'home' ? (
                         <HomeIcon className="w-full h-full" />
-                      ) : (
+                      ) : agent.iconKey === 'globe' ? (
                         <GlobeIcon className="w-full h-full" />
+                      ) : (
+                        <StethoscopeIcon className="w-full h-full" />
                       )}
                     </div>
                     <div>
