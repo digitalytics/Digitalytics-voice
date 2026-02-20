@@ -31,6 +31,18 @@ function GlobeIcon({ className }: { className?: string }) {
   );
 }
 
+function StethoscopeIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 4v4a7 7 0 0014 0V4" />
+      <path d="M12 15v2" />
+      <circle cx="12" cy="19" r="2" />
+      <circle cx="5" cy="4" r="1" fill="currentColor" stroke="none" />
+      <circle cx="19" cy="4" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
 function CheckBadge() {
   return (
     <div className="absolute -top-2 -right-2 w-6 h-6 bg-green-600 rounded-full flex items-center justify-center shadow-md">
@@ -66,8 +78,10 @@ function AgentCard({ agent, isSelected, onClick }: AgentCardProps) {
       <div className={`w-10 h-10 mb-3 ${isSelected ? 'text-green-800' : 'text-gray-500'}`}>
         {agent.iconKey === 'home' ? (
           <HomeIcon className="w-full h-full" />
-        ) : (
+        ) : agent.iconKey === 'globe' ? (
           <GlobeIcon className="w-full h-full" />
+        ) : (
+          <StethoscopeIcon className="w-full h-full" />
         )}
       </div>
       <p className={`font-semibold text-sm leading-tight ${isSelected ? 'text-green-900' : 'text-gray-800'}`}>
