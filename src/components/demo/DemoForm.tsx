@@ -155,18 +155,26 @@ export default function DemoForm() {
     try {
       const cleanedPhone = cleanPhoneNumber(formData.phoneNumber);
 
-      const response = await fetch(selectedAgent.webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: formData.name.trim(),
-          phoneNumber: cleanedPhone,
-          email: formData.email.trim(),
-        }),
-        signal: AbortSignal.timeout(API_CONFIG.timeout),
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), API_CONFIG.timeout);
+
+      let response: Response;
+      try {
+        response = await fetch(selectedAgent.webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            name: formData.name.trim(),
+            phoneNumber: cleanedPhone,
+            email: formData.email.trim(),
+          }),
+          signal: controller.signal,
+        });
+      } finally {
+        clearTimeout(timeoutId);
+      }
 
       if (!response.ok) {
         throw new Error(`Server error: ${response.status}`);
