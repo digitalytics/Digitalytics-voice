@@ -79,7 +79,6 @@ export const NAV_LINKS = [
 // Company Info
 export const COMPANY = {
   name: 'Digitalytics Voice',
-  email: 'voice@digitalytics.ai',
-  phone: '(555) 123-4567',
+  email: 'contact@digitalytics.ai',
   mainWebsite: 'https://digitalytics.ai',
 } as const;

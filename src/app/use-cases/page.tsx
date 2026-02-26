@@ -217,7 +217,7 @@ export default function UseCasesPage() {
                     </div>
                   </div>
                   <Link
-                    href="/demo"
+                    href={`/demo?agent=${agent.agentId}`}
                     className="inline-block bg-green-800 text-white px-6 py-2.5 rounded-full hover:bg-green-700 transition-all shadow-md font-semibold text-sm whitespace-nowrap"
                   >
                     Try Live Demo →

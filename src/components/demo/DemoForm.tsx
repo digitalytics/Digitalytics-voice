@@ -94,8 +94,8 @@ function AgentCard({ agent, isSelected, onClick }: AgentCardProps) {
   );
 }
 
-export default function DemoForm() {
-  const [selectedAgentId, setSelectedAgentId] = useState<AgentId>('real-estate');
+export default function DemoForm({ initialAgentId = 'real-estate' }: { initialAgentId?: AgentId }) {
+  const [selectedAgentId, setSelectedAgentId] = useState<AgentId>(initialAgentId);
   const [formData, setFormData] = useState<DemoFormData>({
     name: '',
     phoneNumber: '',
