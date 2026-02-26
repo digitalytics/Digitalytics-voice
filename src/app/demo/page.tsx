@@ -3,13 +3,27 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ScrollToTop from '@/components/layout/ScrollToTop';
 import DemoForm from '@/components/demo/DemoForm';
+import { AgentId } from '@/types';
+import { AGENTS } from '@/lib/constants';
 
 export const metadata: Metadata = {
   title: 'Live Demo | AI Voice Agent',
   description: 'Try our AI voice agent live. Get a demo call within 2 minutes and experience intelligent voice automation.',
 };
 
-export default function DemoPage() {
+const VALID_AGENT_IDS = AGENTS.map((a) => a.id);
+
+export default async function DemoPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ agent?: string }>;
+}) {
+  const { agent } = await searchParams;
+  const initialAgentId: AgentId =
+    VALID_AGENT_IDS.includes(agent as AgentId)
+      ? (agent as AgentId)
+      : 'real-estate';
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -29,7 +43,7 @@ export default function DemoPage() {
             </div>
 
             {/* Demo Form */}
-            <DemoForm />
+            <DemoForm initialAgentId={initialAgentId} />
           </div>
         </section>
       </main>
