@@ -88,18 +88,18 @@ const steps = [
             "MediBook's AI voice engine speaks like a real receptionist — understanding patient intent and collecting all required details through natural dialogue.",
         icon: '🗣️',
     },
-
-    number: '03',
-    title: 'Everything is actioned automatically',
-    description:
-    'n8n automation instantly updates Airtable records, sends a confirmation email via Gmail, and fires an SMS via Twilio — all in real time.',
-    icon: '⚡',
+    {
+        number: '03',
+        title: 'Everything is actioned automatically',
+        description:
+            'n8n automation instantly updates Airtable records, sends a confirmation email via Gmail, and fires an SMS via Twilio — all in real time.',
+        icon: '⚡',
     },
-{
-    number: '04',
+    {
+        number: '04',
         title: 'Clinic gets a full summary',
-            description:
-    'Staff receive a clean summary of every interaction — appointment details, patient info, and any notes — with zero manual effort required.',
+        description:
+            'Staff receive a clean summary of every interaction — appointment details, patient info, and any notes — with zero manual effort required.',
         icon: '📋',
     },
 ];
