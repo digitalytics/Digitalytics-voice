@@ -216,12 +216,22 @@ export default function UseCasesPage() {
                       <p className="text-gray-600 text-sm">{agent.agentTagline}</p>
                     </div>
                   </div>
-                  <Link
-                    href={`/demo?agent=${agent.agentId}`}
-                    className="inline-block bg-green-800 text-white px-6 py-2.5 rounded-full hover:bg-green-700 transition-all shadow-md font-semibold text-sm whitespace-nowrap"
-                  >
-                    Try Live Demo →
-                  </Link>
+                  <div className="flex items-center gap-3 flex-wrap">
+                    {agent.agentId === 'medibook' && (
+                      <Link
+                        href="/agents/medibook"
+                        className="inline-block border-2 border-green-800 text-green-800 px-6 py-2.5 rounded-full hover:bg-green-800 hover:text-white transition-all shadow-md font-semibold text-sm whitespace-nowrap"
+                      >
+                        View Full Details →
+                      </Link>
+                    )}
+                    <Link
+                      href={`/demo?agent=${agent.agentId}`}
+                      className="inline-block bg-green-800 text-white px-6 py-2.5 rounded-full hover:bg-green-700 transition-all shadow-md font-semibold text-sm whitespace-nowrap"
+                    >
+                      Try Live Demo →
+                    </Link>
+                  </div>
                 </motion.div>
 
                 {/* Use Case Cards */}
@@ -236,35 +246,31 @@ export default function UseCasesPage() {
                     <motion.div
                       key={index}
                       variants={fadeInUp}
-                      className={`rounded-3xl p-8 md:p-12 ${
-                        useCase.isPrimary
+                      className={`rounded-3xl p-8 md:p-12 ${useCase.isPrimary
                           ? 'bg-gradient-to-r from-[#004D3E] to-green-800 text-white shadow-2xl'
                           : 'bg-gray-50 shadow-lg'
-                      }`}
+                        }`}
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                         <div>
                           <div className="text-6xl mb-4">{useCase.icon}</div>
                           <h2
-                            className={`text-3xl md:text-4xl font-bold mb-4 ${
-                              useCase.isPrimary ? 'text-white' : 'text-gray-900'
-                            }`}
+                            className={`text-3xl md:text-4xl font-bold mb-4 ${useCase.isPrimary ? 'text-white' : 'text-gray-900'
+                              }`}
                           >
                             {useCase.title}
                           </h2>
                           <p
-                            className={`text-lg mb-6 ${
-                              useCase.isPrimary ? 'text-gray-200' : 'text-gray-600'
-                            }`}
+                            className={`text-lg mb-6 ${useCase.isPrimary ? 'text-gray-200' : 'text-gray-600'
+                              }`}
                           >
                             {useCase.description}
                           </p>
                         </div>
                         <div>
                           <h3
-                            className={`text-xl font-bold mb-4 ${
-                              useCase.isPrimary ? 'text-white' : 'text-gray-900'
-                            }`}
+                            className={`text-xl font-bold mb-4 ${useCase.isPrimary ? 'text-white' : 'text-gray-900'
+                              }`}
                           >
                             Key Features:
                           </h3>
@@ -272,11 +278,10 @@ export default function UseCasesPage() {
                             {useCase.features.map((feature, idx) => (
                               <li key={idx} className="flex items-start">
                                 <svg
-                                  className={`w-6 h-6 mr-3 flex-shrink-0 ${
-                                    useCase.isPrimary
+                                  className={`w-6 h-6 mr-3 flex-shrink-0 ${useCase.isPrimary
                                       ? 'text-green-300'
                                       : 'text-green-600'
-                                  }`}
+                                    }`}
                                   fill="none"
                                   stroke="currentColor"
                                   viewBox="0 0 24 24"
