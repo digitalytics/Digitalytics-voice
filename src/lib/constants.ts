@@ -74,6 +74,7 @@ export const NAV_LINKS = [
   { href: '/demo', label: 'Live Demo' },
   { href: '/use-cases', label: 'Use Cases' },
   { href: '/agents/medibook', label: 'MediBook' },
+  { href: '/agents/hvac', label: 'HVAC Agent' },
   { href: '/pricing', label: 'Pricing' },
 ] as const;
 
