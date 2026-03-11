@@ -1,12 +1,12 @@
 /**
  * Agent identifier
  */
-export type AgentId = 'real-estate' | 'tourbot' | 'medibook';
+export type AgentId = 'real-estate' | 'tourbot' | 'medibook' | 'hvac';
 
 /**
  * Agent icon key
  */
-export type AgentIconKey = 'home' | 'globe' | 'stethoscope';
+export type AgentIconKey = 'home' | 'globe' | 'stethoscope' | 'wrench';
 
 /**
  * Agent configuration

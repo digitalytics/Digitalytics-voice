@@ -66,6 +66,14 @@ export const AGENTS = [
     iconKey: 'stethoscope' as const,
     webhookUrl: 'https://n8n.digitalytics.us/webhook/medical-outbound-call',
   },
+  {
+    id: 'hvac' as const,
+    name: 'HVAC Agent',
+    tagline: 'AI HVAC Receptionist — Live 24/7',
+    description: 'Fill out the form and receive a live demo call from the HVAC AI agent — handling emergencies, service bookings, and FAQ automatically.',
+    iconKey: 'wrench' as const,
+    webhookUrl: 'https://n8n.digitalytics.us/webhook/hvac-outbound-call',
+  },
 ];
 
 // Navigation Links
