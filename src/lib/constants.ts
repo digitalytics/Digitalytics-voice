@@ -81,9 +81,15 @@ export const NAV_LINKS = [
   { href: '/', label: 'Home' },
   { href: '/demo', label: 'Live Demo' },
   { href: '/use-cases', label: 'Use Cases' },
-  { href: '/agents/medibook', label: 'MediBook' },
-  { href: '/agents/hvac', label: 'HVAC Agent' },
   { href: '/pricing', label: 'Pricing' },
+] as const;
+
+// Agent pages shown in the "Agents" dropdown
+export const AGENT_NAV_LINKS = [
+  { href: '/agents/real-estate', label: 'Real Estate Agent', icon: '🏠', desc: 'Bay Area investment guidance' },
+  { href: '/agents/tourbot', label: 'TourBot', icon: '✈️', desc: 'Tours, bookings & travel support' },
+  { href: '/agents/medibook', label: 'MediBook', icon: '🩺', desc: 'AI medical receptionist' },
+  { href: '/agents/hvac', label: 'HVAC Agent', icon: '🔧', desc: 'Emergency, service & FAQ handling' },
 ] as const;
 
 // Company Info

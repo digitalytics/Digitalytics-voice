@@ -40,6 +40,14 @@ function StethoscopeIcon({ className }: { className?: string }) {
   );
 }
 
+function WrenchIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" />
+    </svg>
+  );
+}
+
 const AGENT_USE_CASES = [
   {
     agentId: 'real-estate',
@@ -163,6 +171,28 @@ const AGENT_USE_CASES = [
       },
     ],
   },
+  {
+    agentId: 'hvac',
+    agentName: 'HVAC Agent',
+    agentTagline: 'AI HVAC Receptionist — Live 24/7',
+    iconKey: 'wrench',
+    useCases: [
+      {
+        title: 'Emergency Detection & Full Call Handling',
+        description:
+          'Your 24/7 HVAC AI agent handles every inbound call automatically — from gas leak emergencies and live technician transfers to service bookings, installation surveys, and general FAQ.',
+        icon: '🔧',
+        features: [
+          'Detect emergencies & transfer live to on-call technician',
+          'Diagnose faults and book service visits automatically',
+          'Handle installation & replacement survey requests',
+          'Answer common HVAC maintenance and pricing questions',
+          'Send email & SMS confirmations after every call',
+        ],
+        isPrimary: true,
+      },
+    ],
+  },
 ];
 
 export default function UseCasesPage() {
@@ -178,9 +208,9 @@ export default function UseCasesPage() {
                 AI Voice Agents for Every Industry
               </h1>
               <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                Our Real Estate Agent, TourBot, and MediBook each handle
+                Our Real Estate Agent, TourBot, MediBook, and HVAC Agent each handle
                 real-world customer conversations 24/7 — so your team never
-                misses a lead, booking, or patient call.
+                misses a lead, booking, patient call, or service request.
               </p>
             </motion.div>
           </div>
@@ -205,6 +235,8 @@ export default function UseCasesPage() {
                         <HomeIcon className="w-full h-full" />
                       ) : agent.iconKey === 'globe' ? (
                         <GlobeIcon className="w-full h-full" />
+                      ) : agent.iconKey === 'wrench' ? (
+                        <WrenchIcon className="w-full h-full" />
                       ) : (
                         <StethoscopeIcon className="w-full h-full" />
                       )}
@@ -217,14 +249,12 @@ export default function UseCasesPage() {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 flex-wrap">
-                    {agent.agentId === 'medibook' && (
-                      <Link
-                        href="/agents/medibook"
-                        className="inline-block border-2 border-green-800 text-green-800 px-6 py-2.5 rounded-full hover:bg-green-800 hover:text-white transition-all shadow-md font-semibold text-sm whitespace-nowrap"
-                      >
-                        View Full Details →
-                      </Link>
-                    )}
+                    <Link
+                      href={`/agents/${agent.agentId}`}
+                      className="inline-block border-2 border-green-800 text-green-800 px-6 py-2.5 rounded-full hover:bg-green-800 hover:text-white transition-all shadow-md font-semibold text-sm whitespace-nowrap"
+                    >
+                      View Full Details →
+                    </Link>
                     <Link
                       href={`/demo?agent=${agent.agentId}`}
                       className="inline-block bg-green-800 text-white px-6 py-2.5 rounded-full hover:bg-green-700 transition-all shadow-md font-semibold text-sm whitespace-nowrap"
