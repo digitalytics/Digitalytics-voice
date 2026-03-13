@@ -5,12 +5,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - RETELL_API_KEY=${RETELL_API_KEY}
+        - RETELL_AGENT_ID=${RETELL_AGENT_ID}
     container_name: voice-demo
     ports:
       - "3002:3000"
     restart: unless-stopped
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
-    # Uncomment to add environment variables from file
-    # env_file:
-    #   - .env.production

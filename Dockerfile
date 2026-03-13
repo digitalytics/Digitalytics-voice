@@ -25,6 +25,12 @@ COPY . .
 # Disable telemetry during build
 ENV NEXT_TELEMETRY_DISABLED=1
 
+# Retell environment variables
+ARG RETELL_API_KEY
+ARG RETELL_AGENT_ID
+ENV RETELL_API_KEY=$RETELL_API_KEY
+ENV RETELL_AGENT_ID=$RETELL_AGENT_ID
+
 # Build the application
 RUN npm run build
 
@@ -34,6 +40,10 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
+
+# Retell environment variables (passed at runtime)
+ENV RETELL_API_KEY=""
+ENV RETELL_AGENT_ID=""
 
 # Create a non-root user
 RUN addgroup --system --gid 1001 nodejs
