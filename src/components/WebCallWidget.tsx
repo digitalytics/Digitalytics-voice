@@ -68,7 +68,7 @@ export default function WebCallWidget() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-2">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-2">
       <AnimatePresence mode="wait">
         {callState === 'idle' && (
           <motion.div
