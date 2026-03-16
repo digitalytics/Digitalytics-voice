@@ -288,7 +288,7 @@ export default function HVACPage() {
                             variants={staggerContainer}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="grid grid-cols-1 md:grid-cols-3 gap-8"
                         >
                             {[
@@ -311,7 +311,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="text-center text-gray-500 text-sm mt-6"
                         >
                             The HVAC AI agent eliminates all three problems — automatically.
@@ -326,7 +326,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -343,7 +343,7 @@ export default function HVACPage() {
                             variants={staggerContainer}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="grid grid-cols-1 md:grid-cols-2 gap-8"
                         >
                             {capabilities.map((cap, i) => (
@@ -384,7 +384,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="text-center mb-16"
                         >
                             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -399,7 +399,7 @@ export default function HVACPage() {
                             variants={staggerContainer}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="grid grid-cols-1 md:grid-cols-2 gap-8"
                         >
                             {steps.map((step, i) => (
@@ -431,7 +431,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="mt-10 bg-red-500/20 border border-red-400/40 rounded-2xl p-6 flex items-start gap-4"
                         >
                             <span className="text-3xl flex-shrink-0">🚨</span>
@@ -454,7 +454,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="text-center mb-14"
                         >
                             <h2 className="text-4xl font-bold text-gray-900 mb-4">
@@ -468,7 +468,7 @@ export default function HVACPage() {
                             variants={staggerContainer}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                             className="space-y-3"
                         >
                             {faqs.map((faq, i) => (
@@ -487,7 +487,7 @@ export default function HVACPage() {
                             variants={fadeInUp}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true }}
+                            viewport={{ once: true, amount: 0.1 }}
                         >
                             <div className="text-6xl mb-6">🌡️</div>
                             <h2 className="text-4xl md:text-5xl font-bold mb-6">

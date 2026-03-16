@@ -2,12 +2,15 @@
 
 import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { NAV_LINKS, AGENT_NAV_LINKS } from '@/lib/constants';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAgentsOpen, setIsAgentsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -20,39 +23,67 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handleClick);
   }, []);
 
+  // Elevate navbar on scroll
+  useEffect(() => {
+    function handleScroll() {
+      setScrolled(window.scrollY > 10);
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-shadow duration-300 bg-white/90 backdrop-blur-md border-b border-gray-200 ${scrolled ? 'shadow-md' : ''}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-16 lg:px-32">
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2 flex-shrink-0">
-            <span className="text-2xl font-bold text-[#004D3E]">
-              Digitalytics Voice
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 group">
+            {/* Waveform icon */}
+            <div className="w-8 h-8 bg-[#004D3E] rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#0a5f4a] transition-colors">
+              <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+                <path d="M2 12h2" />
+                <path d="M5 8v8" />
+                <path d="M9 5v14" />
+                <path d="M13 9v6" />
+                <path d="M17 7v10" />
+                <path d="M21 10v4" />
+              </svg>
+            </div>
+            <span className="text-xl font-bold text-[#004D3E]">
+              Digitalytics <span className="text-green-600">Voice</span>
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-gray-600 hover:text-[#004D3E] transition-colors font-medium whitespace-nowrap"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-1">
+            {NAV_LINKS.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`relative px-3 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap ${isActive
+                      ? 'text-[#004D3E] bg-green-50'
+                      : 'text-gray-600 hover:text-[#004D3E] hover:bg-gray-50'
+                    }`}
+                >
+                  {link.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#004D3E] rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
 
             {/* Agents Dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsAgentsOpen((v) => !v)}
-                className={`flex items-center gap-2 font-semibold whitespace-nowrap px-4 py-1.5 rounded-full border-2 transition-all duration-200 ${
-                  isAgentsOpen
+                className={`flex items-center gap-2 font-semibold whitespace-nowrap px-4 py-1.5 rounded-full border-2 transition-all duration-200 text-sm ${isAgentsOpen
                     ? 'bg-[#004D3E] text-white border-[#004D3E]'
                     : 'border-[#004D3E] text-[#004D3E] hover:bg-[#004D3E] hover:text-white'
-                }`}
+                  }`}
               >
                 {/* Pulsing live dot */}
                 <span className="relative flex h-2 w-2">
@@ -92,7 +123,7 @@ export default function Navbar() {
 
             <Link
               href="/demo"
-              className="bg-green-800 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-all shadow-lg hover:shadow-xl whitespace-nowrap"
+              className="bg-[#004D3E] text-white px-5 py-2 rounded-full hover:bg-[#0a5f4a] transition-all shadow-md hover:shadow-lg whitespace-nowrap text-sm font-semibold ml-1"
             >
               Try Demo
             </Link>
@@ -116,16 +147,22 @@ export default function Navbar() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col space-y-1">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-gray-600 hover:text-[#004D3E] transition-colors font-medium px-2 py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className={`font-medium px-3 py-2 rounded-lg transition-colors ${isActive
+                        ? 'text-[#004D3E] bg-green-50'
+                        : 'text-gray-600 hover:text-[#004D3E] hover:bg-gray-50'
+                      }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
 
               {/* Mobile Agents section */}
               <div className="px-2 pt-2 pb-1">
@@ -134,7 +171,7 @@ export default function Navbar() {
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="flex items-center gap-2 text-gray-600 hover:text-[#004D3E] transition-colors font-medium py-2"
+                    className="flex items-center gap-2 text-gray-600 hover:text-[#004D3E] transition-colors font-medium py-2 px-1"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span>{link.icon}</span>
@@ -145,7 +182,7 @@ export default function Navbar() {
 
               <Link
                 href="/demo"
-                className="bg-green-800 text-white px-6 py-2 rounded-full hover:bg-green-700 transition-all shadow-lg text-center mt-2"
+                className="bg-[#004D3E] text-white px-6 py-2 rounded-full hover:bg-[#0a5f4a] transition-all shadow-lg text-center mt-2 font-semibold"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Try Demo

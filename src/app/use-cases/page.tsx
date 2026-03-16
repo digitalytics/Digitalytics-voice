@@ -226,7 +226,7 @@ export default function UseCasesPage() {
                   variants={fadeInUp}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   className="bg-gradient-to-r from-gray-100 to-gray-50 border-l-4 border-green-800 rounded-2xl p-6 mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4"
                 >
                   <div className="flex items-center gap-4">
@@ -269,7 +269,7 @@ export default function UseCasesPage() {
                   variants={staggerContainer}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.1 }}
                   className="space-y-8"
                 >
                   {agent.useCases.filter((uc) => uc.isPrimary).map((useCase, index) => (
@@ -352,7 +352,7 @@ export default function UseCasesPage() {
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <h2 className="text-4xl font-bold text-gray-900 mb-6">
                 Ready to See It in Action?

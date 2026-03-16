@@ -1,6 +1,5 @@
 'use client';
 
-import type { Metadata } from 'next';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/layout/Navbar';
@@ -11,17 +10,30 @@ import { COMPANY } from '@/lib/constants';
 
 const features = [
   {
-    icon: '💰',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15v-4H7l5-8v4h4l-5 8z" fill="currentColor" stroke="none" />
+      </svg>
+    ),
     title: 'Volume-Based Pricing',
     description: 'Flexible pricing that scales with your business needs and call volume.',
   },
   {
-    icon: '⚙️',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M12 20h9" />
+        <path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+      </svg>
+    ),
     title: 'Custom Features',
     description: 'Tailored AI voice agents designed specifically for your industry and workflow.',
   },
   {
-    icon: '🛟',
+    icon: (
+      <svg className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth={1.8} strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
+        <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+      </svg>
+    ),
     title: 'Dedicated Support',
     description: 'Priority support and ongoing optimization to ensure peak performance.',
   },
@@ -55,7 +67,7 @@ export default function PricingPage() {
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
                 Custom Enterprise Solutions
               </h1>
               <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
@@ -73,16 +85,22 @@ export default function PricingPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
             >
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl font-bold text-center text-gray-900 mb-12"
+              >
+                What&apos;s Included
+              </motion.h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 {features.map((feature, index) => (
                   <motion.div
                     key={index}
                     variants={fadeInUp}
-                    className="bg-gray-50 rounded-2xl p-8 text-center"
+                    className="bg-white rounded-2xl p-8 text-center border border-gray-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all group"
                   >
-                    <div className="text-5xl mb-4">{feature.icon}</div>
+                    <div className="w-14 h-14 bg-[#004D3E]/10 rounded-xl flex items-center justify-center mb-5 mx-auto text-[#004D3E] group-hover:bg-[#004D3E] group-hover:text-white transition-all">{feature.icon}</div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">
                       {feature.title}
                     </h3>
@@ -104,7 +122,7 @@ export default function PricingPage() {
                 </Link>
                 <a
                   href={`mailto:${COMPANY.email}?subject=Pricing Inquiry`}
-                  className="bg-gray-100 text-gray-800 px-8 py-4 rounded-full hover:bg-gray-200 transition-all text-lg font-semibold text-center"
+                  className="border-2 border-[#004D3E] text-[#004D3E] px-8 py-4 rounded-full hover:bg-[#004D3E] hover:text-white transition-all text-lg font-semibold text-center"
                 >
                   Contact for Pricing
                 </a>
@@ -120,7 +138,7 @@ export default function PricingPage() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
             >
               <motion.h2
                 variants={fadeInUp}

@@ -12,7 +12,7 @@ export default function CTA() {
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Ready to Experience AI Voice Agents?
