@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import DigitalyAyeDemoForm from './DigitalyAyeDemoForm';
+import IrtazaSDemoForm from './IrtazaSDemoForm';
 
 export const metadata: Metadata = {
   title: 'IrtazaS-demo',
-  description: 'Meet DigitalyAye’s original AI voice personalities and request a live call.',
+  description: 'Meet IrtazaS-demo AI voice personalities and request a live call.',
 };
 
-export default function DigitalyAyeDemoPage() {
+export default function IrtazaSDemoPage() {
   return (
     <main className="digitalyaye-shell min-h-screen overflow-hidden text-white">
       <div className="digitalyaye-grid" aria-hidden="true" />
@@ -18,10 +18,10 @@ export default function DigitalyAyeDemoPage() {
           <header className="mb-10 flex items-center justify-between gap-5">
             <div className="flex items-center gap-3">
               <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-white/15 bg-white/10 backdrop-blur-xl">
-                <span className="digitalyaye-logo-mark">D</span>
+                <span className="digitalyaye-logo-mark">I</span>
               </div>
               <div>
-                <p className="text-sm font-bold tracking-wide">DigitalyAye</p>
+                <p className="text-sm font-bold tracking-wide">IrtazaS-demo</p>
                 <p className="text-[10px] uppercase tracking-[0.28em] text-white/45">Voice intelligence</p>
               </div>
             </div>
@@ -47,10 +47,10 @@ export default function DigitalyAyeDemoPage() {
             </p>
           </div>
 
-          <DigitalyAyeDemoForm />
+          <IrtazaSDemoForm />
 
           <footer className="mt-10 flex flex-col gap-3 border-t border-white/10 py-6 text-xs text-white/35 sm:flex-row sm:items-center sm:justify-between">
-            <p>© 2026 DigitalyAye. Conversational systems with character.</p>
+            <p>© 2026 IrtazaS-demo. Conversational systems with character.</p>
             <p>Private · Secure · Human-guided</p>
           </footer>
         </div>

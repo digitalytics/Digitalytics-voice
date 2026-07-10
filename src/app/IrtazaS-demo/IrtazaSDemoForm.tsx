@@ -89,7 +89,7 @@ function Field({ label, type, value, placeholder, error, onChange }: {
   );
 }
 
-export default function DigitalyAyeDemoForm() {
+export default function IrtazaSDemoForm() {
   const [selectedAgentId, setSelectedAgentId] = useState<AgentId>('real-estate');
   const [formData, setFormData] = useState<DemoFormData>({ name: '', phoneNumber: '', email: '' });
   const [errors, setErrors] = useState<FormErrors>({});

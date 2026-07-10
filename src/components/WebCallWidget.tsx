@@ -17,7 +17,7 @@ export default function WebCallWidget() {
   const clientRef = useRef<any>(null);
 
   useEffect(() => {
-    if (pathname === '/digitalyaye-demo') return;
+    if (pathname === '/IrtazaS-demo') return;
 
     let RetellWebClient: new () => {
       startCall: (opts: { accessToken: string }) => Promise<void>;
@@ -48,7 +48,7 @@ export default function WebCallWidget() {
     };
   }, [pathname]);
 
-  if (pathname === '/digitalyaye-demo') {
+  if (pathname === '/IrtazaS-demo') {
     return null;
   }
 
