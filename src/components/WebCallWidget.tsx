@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { buttonHover, buttonTap } from '@/lib/animations';
 
@@ -8,6 +9,7 @@ type CallState = 'idle' | 'connecting' | 'active' | 'ended';
 type TalkState = 'listening' | 'talking';
 
 export default function WebCallWidget() {
+  const pathname = usePathname();
   const [callState, setCallState] = useState<CallState>('idle');
   const [talkState, setTalkState] = useState<TalkState>('listening');
   const [showTooltip, setShowTooltip] = useState(false);
@@ -15,6 +17,8 @@ export default function WebCallWidget() {
   const clientRef = useRef<any>(null);
 
   useEffect(() => {
+    if (pathname === '/digitalyaye-demo') return;
+
     let RetellWebClient: new () => {
       startCall: (opts: { accessToken: string }) => Promise<void>;
       stopCall: () => void;
@@ -42,7 +46,11 @@ export default function WebCallWidget() {
     return () => {
       clientRef.current?.stopCall();
     };
-  }, []);
+  }, [pathname]);
+
+  if (pathname === '/digitalyaye-demo') {
+    return null;
+  }
 
   async function startCall() {
     setShowTooltip(false);
